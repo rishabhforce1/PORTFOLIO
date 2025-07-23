@@ -81,6 +81,7 @@
 
   <script>
     const form = document.getElementById("contactForm");
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
 
@@ -90,10 +91,12 @@
         body: formData
       })
         .then(() => {
-          window.location.href = "https://rishabhdubey.vercel.app/";
+          form.reset(); // Clear the form
+          alert("Thank you! Your message has been sent.");
+          window.location.href = "https://rishabhdubey.vercel.app/"; // Redirect
         })
         .catch((error) => {
-          alert("There was an error. Please try again!");
+          alert("There was an error. Please try again.");
           console.error("Error!", error.message);
         });
     });
