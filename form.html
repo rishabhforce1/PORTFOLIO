@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | Rishabh Kumar Dubey</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #e6f2ff, #ffffff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .contact-container {
+      background: #ffffff;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      max-width: 450px;
+      width: 90%;
+    }
+
+    .contact-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #003366;
+    }
+
+    .contact-container label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .contact-container input,
+    .contact-container textarea {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      background-color: #f9f9f9;
+    }
+
+    .contact-container input[type="submit"] {
+      background-color: #007acc;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-container input[type="submit"]:hover {
+      background-color: #005fa3;
+    }
+  </style>
+</head>
+<body>
+  <form class="contact-container" id="contactForm">
+    <h2>Get in Touch</h2>
+
+    <label for="name">Full Name</label>
+    <input type="text" id="name" name="name" required />
+
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="4" required></textarea>
+
+    <input type="submit" value="Send Message" />
+  </form>
+
+  <script>
+    const form = document.getElementById("contactForm");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      fetch("https://script.google.com/macros/s/AKfycbzhqkQqWz2xUGmqXtBQRrIhgkbEtOxMxCIBrIk0dus3tzZg4NtdMvpGJth3B0eXCN0mHQ/exec", {
+        method: "POST",
+        body: formData
+      })
+        .then(() => {
+          window.location.href = "https://rishabhdubey.vercel.app/";
+        })
+        .catch((error) => {
+          alert("There was an error. Please try again!");
+          console.error("Error!", error.message);
+        });
+    });
+  </script>
+</body>
+</html>
