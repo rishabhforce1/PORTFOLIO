@@ -452,6 +452,70 @@
    
   </div>
 
+  <!-- ✅ Certification Section -->
+<div id="certifications" style="text-align: center; padding: 50px 20px; background: #f0f8ff;">
+  <h2>CERTIFICATIONS</h2>
+  
+  <div class="cert-slide-container">
+    <img class="cert-slide" src="cert1.jpg" alt="Certificate 1">
+    <img class="cert-slide" src="cert2.jpg" alt="Certificate 2">
+    <img class="cert-slide" src="cert3.jpg" alt="Certificate 3">
+  </div>
+</div>
+
+<!-- ✅ CSS -->
+<style>
+  #certifications h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .cert-slide-container {
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+    height: auto;
+  }
+
+  .cert-slide {
+    width: 100%;
+    display: none;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .cert-slide.active {
+    display: block;
+    animation: fade 1s ease-in-out;
+  }
+
+  @keyframes fade {
+    from {opacity: 0.4;}
+    to {opacity: 1;}
+  }
+</style>
+
+<!-- ✅ JavaScript -->
+<script>
+  let slideIndex = 0;
+  const slides = document.getElementsByClassName("cert-slide");
+
+  function showSlides() {
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].classList.remove("active");
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1; }
+    slides[slideIndex - 1].classList.add("active");
+    setTimeout(showSlides, 3000); // Change image every 3 seconds
+  }
+
+  showSlides(); // Start the slideshow
+</script>
+
+
 <div style="display: flex; justify-content: center; align-items: center; margin-top: 40px;">
   <div style="background: white; padding: 20px 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
     <a href="form.html" class="btn" target="_blank">click to send query</a>
