@@ -88,11 +88,24 @@
     <label for="message">Message</label>
     <textarea id="message" name="message" rows="4" required></textarea>
 
+    <!-- Hidden input to store IP -->
+    <input type="hidden" id="ip" name="ip" />
+
     <input type="submit" value="Send Message" />
   </form>
 
   <script>
     const form = document.getElementById("contactForm");
+
+    // Fetch IP address and fill it into hidden input
+    fetch("https://api.ipify.org?format=json")
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("ip").value = data.ip;
+      })
+      .catch(() => {
+        document.getElementById("ip").value = "IP not found";
+      });
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
